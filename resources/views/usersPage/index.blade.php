@@ -226,7 +226,7 @@
                 <div class="col-lg-8 border-grey1 pd-0px">
                     <div class="pd-10px">
                         <h3 class="text-uppercase font-family-poppins col-6 d-inline-block fz-1rem pd-top-13px"><a href="#" class="text-dark"><span class="mr-right-30px">  Từ:{{$item->sanbay1->thanhpho}} </span>Đến: {{$item->sanbay2->thanhpho}}  </a></h3>
-                        <a class="btn btn-hoang text-white" style="margin-right: 20px">Chọn</a>
+                        <a href="{{url("/usersPage/contract")}}" class="btn btn-hoang text-white" style="margin-right: 20px">Chọn</a>
                         <div class="date mr-lr-15px">
                             <a href="#" class="cl-te-grey text-uppercase fz-0p7rem">
                                 <i class="fa fa-chevron-up mr-right-5px"></i>
