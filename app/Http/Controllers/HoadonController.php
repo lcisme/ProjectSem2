@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Car;
+use App\Models\Chuyenbay;
 use App\Models\Hoadon;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,20 +11,21 @@ class HoadonController extends Controller
 {
     public function all(Request  $request){
         $users = User::all();
-//        $chuyenbay = Chuyenbay::all();
+        $chuyenbay = Chuyenbay::all();
         $paraID = $request->get("idkh");
         $hoadon= Hoadon::ID($paraID)->simplePaginate(10);
         return view ("admin.hoadon.list-hoadon",[
             "hoadon"=>$hoadon,
             "users"=>$users,
-//            "chuyenbay"=>$chuyenbay
+            "chuyenbay"=>$chuyenbay
         ]);
     }
     public function form(){
         $users = User::all();
+        $chuyenbay = Chuyenbay::all();
         return view("admin.hoadon.add-hoadon",[
             "users" =>$users,
-            //"chuyenbay"=>$chuyenbay
+            "chuyenbay"=>$chuyenbay
         ]);
 
     }
@@ -35,8 +36,8 @@ class HoadonController extends Controller
             'idchuyenbay' => 'required',
             'ngaydatve' => 'required',
             'trangthai' => 'required',
-            'vitringoi' => 'required',
-            'giamgia'=>'required',
+            'ghethuong' => 'required',
+            'ghevip'=>'required',
             'tongtien' => 'required',
 
         ],[
@@ -47,27 +48,22 @@ class HoadonController extends Controller
             "idchuyenbay"=>$request->get("idchuyenbay"),
             "ngaydatve"=>$request->get("ngaydatve"),
             "trangthai"=>$request->get("trangthai"),
-            "vitringoi"=>$request->get("vitringoi"),
-            'giamgia' => $request->get("giamgia"),
+            "ghethuong"=>$request->get("ghethuong"),
+            'ghevip' => $request->get("ghevip"),
             'tongtien' => $request->get("tongtien"),
         ]);
         return redirect()->to("/hoadon/list");
     }
-    public function edit($idkh){
-        $hoadon = Hoadon::find($idkh);
+    public function edit($id){
+        $hoadon = Hoadon::find($id);
         return view('admin.hoadon.edit-hoadon',[
             'hoadon'=> $hoadon
         ]);
     }
-    public  function update(Request $request,Hoadon $hoadon){
+    public  function update(Request $request, $id){
+        $hoadon = Hoadon::find($id);
         $hoadon -> update([
-            "idkh"=>$request->get("idkh"),
-            "idchuyenbay"=>$request->get("idchuyenbay"),
-            "ngaydatve"=>$request->get("ngaydatve"),
             "trangthai"=>$request->get("trangthai"),
-            'vitringoi' => $request->get("vitringoi"),
-            'giamgia' => $request->get("giamgia"),
-            'tongtien' => $request->get("tongtien")
         ]);
         return redirect()->to("/hoadon/list")->with("success","Cập nhật hóa đơn thành công");
     }

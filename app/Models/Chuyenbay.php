@@ -55,6 +55,8 @@ class Chuyenbay extends Model
         return $query;
     }
 
+
+
     public function sanbay1(){
         return $this->belongsTo(Sanbay::class,"sanbaydi","idsanbay");
     }

@@ -10,7 +10,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Hóa Đơn</h1>
-                    <a href="{{url("/hoadon/create")}}" class="btn btn-outline-info float-right">
+                    <a href="{{url("/admin/hoadon/create")}}" class="btn btn-outline-info float-right">
                         Thêm Hóa Đơn
                     </a>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <form method="get" action="{{url("/hoadon/list")}}">
+                            <form method="get" action="{{url("/admin/hoadon/list")}}">
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" >
                                         <input type="text" value="{{app("request")->input("idkh")}}"  name="idkh" class="form-control float-right" placeholder="Search by ID khách hàng">
@@ -47,35 +47,28 @@
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th>ID Khách hàng</th>
-                                    <th>Tên Chuyến bay</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Từ</th>
+                                    <th>Đến</th>
                                     <th>Ngày đặt vé</th>
                                     <th>Trạng thái</th>
-                                    <th>Vị trí ngồi</th>
-                                    <th>Giảm giá</th>
+                                    <th>Ghế thường</th>
+                                    <th>Ghế vip</th>
                                     <th>Tổng tiền</th>
-                                    <th>Sửa</th>
-                                    <th>Xóa</th>
+                                    <th>Cập nhật</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($hoadon as $item)
                                     <tr>
                                         <td>{{$item->users->name}}</td>
-{{--                                        <td>{{$item->chuyenbay->tenchuyenbay}}</td>--}}
+                                        <td>{{$item->idchuyenbay}}</td>
                                         <td>{{$item->ngaydatve}}</td>
                                         <td>{{$item->trangthai}}</td>
-                                        <td>{{$item->vitringoi}}</td>
-                                        <td>{{$item->giamgia}}</td>
+                                        <td>{{$item->ghethuong}}</td>
+                                        <td>{{$item->ghevip}}</td>
                                         <td>{{$item->tongtien}}</td>
-                                        <td><a href="{{url("/hoadon/edit",['id'=>$item->id])}}" class="btn btn-outline-info">+</a></td>
-                                        <td>
-                                            <form action="{{url("/hoadon/delete",['idkh'=>$item->id])}}" method="post">
-                                                @csrf
-                                                @method("delete")
-                                                <button type="submit" onclick="return confirm('Xóa Hóa Đơn {{$item->idkh}} ?')" class="btn btn-outline-danger">-</button>
-                                            </form>
-                                        </td>
+                                        <td><a href="{{url("/admin/hoadon/edit",['id'=>$item->id])}}" class="btn btn-outline-info">+</a></td>
                                     </tr>
                                 </tbody>
                                 @endforeach

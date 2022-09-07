@@ -10,7 +10,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1> Sửa Hóa Đơn</h1>
-                    <a href="{{url("/hoadon/list")}}" class="btn btn-outline-info float-right">
+                    <a href="{{url("/admin/hoadon/list")}}" class="btn btn-outline-info float-right">
                         Quay lại
                     </a>
                 </div>
@@ -23,35 +23,20 @@
             </div>
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Staff</h3>
+                    <h3 class="card-title"> Sửa Hóa Đơn</h3>
                 </div>
-                <form role="form" method="post" action="{{url("/hoadon/edit",['staffs'=>$staffs->sID])}}">
+                <form role="form" method="post" action="{{url("/admin/hoadon/edit",['hoadon'=>$hoadon->id])}}">
                     @csrf
                     @method("put")
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">sID</label>
-                            <input disabled type="text" class="form-control" name="sID" id="sID" value="{{$staffs->sID}}" placeholder="sID">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Name</label>
-                            <input type="text" class="form-control" name="Name" id="Name"  value="{{$staffs->Name}}" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Address</label>
-                            <input type="text" class="form-control" name="Address" id="Address"  value="{{$staffs->Address}}" placeholder="Address">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Birthday</label>
-                            <input type="date" class="form-control" name="Birthday" id="Birthday" value="{{$staffs->Birthday}}" placeholder="Birthday">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Salary</label>
-                            <input type="text" class="form-control" name="Salary" id="Salary" value="{{$staffs->Salary}}" placeholder="Salary">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Phone</label>
-                            <input type="text" class="form-control" name="Phone" id="Phone" value="{{$staffs->Phone}}" placeholder="Phone">
+                            <label for="">Trạng thái</label>
+                            <select name="trangthai" class="form-control">
+                                <option value="Selectoption">Select Option</option>
+                                <option value="Waitting">Waitting</option>
+                                <option value="Hired">Hired</option>
+                                <option value="Done">Done</option>
+                            </select>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -62,4 +47,3 @@
         </div>
     </section>
 @endsection
-

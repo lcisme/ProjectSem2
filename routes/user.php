@@ -5,7 +5,13 @@ Route::get('/', function () {
 
 //nguoidung
 Route::get("/usersPage/index",[App\Http\Controllers\UserController::class,"listChuyenbay"]);
-Route::get("/usersPage/contract",[App\Http\Controllers\UserController::class,"listChuyenbay"]);
+
+
+Route::get("/usersPage/contract/{idchuyenbay}",[App\Http\Controllers\UserController::class,"form"]);
+Route::post("/usersPage/contract1/",[App\Http\Controllers\UserController::class,"contract1"]);
+Route::post("/usersPage/contract/",[App\Http\Controllers\UserController::class,"contract"]);
+
+
 Route::get("/usersPage/about",[App\Http\Controllers\UserController::class,"about"]);
 Route::get("/usersPage/blog",[App\Http\Controllers\UserController::class,"blog"]);
 Route::get("/usersPage/blogDetail",[App\Http\Controllers\UserController::class,"blogDetail"]);

@@ -16,8 +16,8 @@ class Hoadon extends Model
         "idchuyenbay",
         "ngaydatve",
         "trangthai",
-        "vitringoi",
-        "giamgia",
+        "ghethuong",
+        "ghevip",
         "tongtien",
        "created_at",
         "updated_at"
@@ -30,11 +30,20 @@ class Hoadon extends Model
     }
 
     public function users(){
-        return $this->belongsTo(User::class,'idkh','id');
+        return $this->belongsTo(User::class,'idkh','sdt');
     }
 
-//    public function chuyenbay(){
-//        return $this->belongsTo(Chuyenbay::class,'idchuyenbay','idchuyenbay');
-//    }
+    public function sanbay1(){
+        return $this->belongsTo(Sanbay::class,"sanbaydi","idsanbay");
+    }
+
+    public function sanbay2(){
+        return $this->belongsTo(Sanbay::class,"sanbayden","idsanbay");
+    }
+
+    public function chuyenbay(){
+        return $this->belongsTo(Chuyenbay::class,"idchuyenbay","idchuyenbay");
+    }
+
 
 }

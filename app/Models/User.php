@@ -75,4 +75,7 @@ class User extends Authenticatable
     public function sanbay2(){
         return $this->belongsTo(Sanbay::class,"sanbayden","idsanbay");
     }
+    public function sanbaydi(){
+        return $this->belongsTo(Sanbay::class,"sanbaydi","idsanbay");
+    }
 }

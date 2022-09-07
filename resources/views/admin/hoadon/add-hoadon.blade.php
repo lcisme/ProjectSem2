@@ -10,7 +10,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Thêm Hóa Đơn</h1>
-                    <a href="{{url("/hoadon/list")}}" class="btn btn-outline-info float-right">
+                    <a href="{{url("/admin/hoadon/list")}}" class="btn btn-outline-info float-right">
                         Quay lại
                     </a>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Thêm Hóa Đơn</h3>
                 </div>
-                <form role="form" method="post" action="{{url("/hoadon/create")}}" enctype="multipart/form-data">
+                <form role="form" method="post" action="{{url("/admin/hoadon/create")}}" enctype="multipart/form-data">
                     @csrf
                     @method("post")
                     <div class="card-body">
@@ -42,7 +42,11 @@
                         </div>
                         <div class="form-group">
                             <label for="">ID Chuyến bay	</label>
-                            <input type="text" class="form-control"  name="idchuyenbay" id="idchuyenbay"  value="{{old("idchuyenbay")}}" placeholder="ID Chuyến bay">
+                            <select name="idchuyenbay" class="form-control">
+                                @foreach($chuyenbay as $item)
+                                    <option @if(old("idchuyenbay") == $item->idchuyenbay) selected @endif value="{{$item->idchuyenbay}}">{{$item->idchuyenbay}}</option>
+                                @endforeach
+                            </select>
                             @error("idchuyenbay")
                             <p class="text-danger">{{$message}}</p>
                             @enderror
@@ -67,16 +71,16 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Vị trí ngồi</label>
-                            <input type="text" class="form-control" name="vitringoi" id="vitringoi" value="{{old("vitringoi")}}" placeholder="Vị trí ngồi">
-                            @error("vitringoi")
+                            <label for="">Ghế thường</label>
+                            <input type="text" class="form-control" name="ghethuong" id="ghethuong" value="{{old("ghethuong")}}" placeholder="Ghế thường">
+                            @error("ghethuong")
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Giảm giá</label>
-                            <input type="text" class="form-control" name="giamgia" id="giamgia" value="{{old("giamgia")}}" placeholder="Giảm giá">
-                            @error("giamgia")
+                            <label for="">Ghế vip</label>
+                            <input type="text" class="form-control" name="ghevip" id="ghevip" value="{{old("ghevip")}}" placeholder="Ghế vip">
+                            @error("ghevip")
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
@@ -96,4 +100,3 @@
         </div>
     </section>
 @endsection
-

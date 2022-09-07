@@ -69,15 +69,6 @@ Route::group(['prefix'=>"chuyenbay"],function (){
     Route::delete("/delete/{id}",[\App\Http\Controllers\ChuyenbayController::class,"delete"]);
 });
 
-//giave
-Route::group(['prefix'=>"giave"],function (){
-    Route::get("/list",[\App\Http\Controllers\GiaveController::class,"all"]);
-    Route::get("/create",[\App\Http\Controllers\GiaveController::class,"form"]);
-    Route::post("/create",[\App\Http\Controllers\GiaveController::class,"create"]);
-    Route::get("/edit/{id}",[\App\Http\Controllers\GiaveController::class,"edit"]);
-    Route::put("/edit/{id}",[\App\Http\Controllers\GiaveController::class,"update"]);
-    Route::delete("/delete/{id}",[\App\Http\Controllers\GiaveController::class,"delete"]);
-});
 
 //sanbay
 Route::group(['prefix'=>"sanbay"],function (){
