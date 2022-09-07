@@ -62,7 +62,8 @@
                                 @foreach($hoadon as $item)
                                     <tr>
                                         <td>{{$item->users->name}}</td>
-                                        <td>{{$item->idchuyenbay}}</td>
+                                        <td>{{$item->chuyenbay->sanbay1->thanhpho}}</td>
+                                        <td>{{$item->chuyenbay->sanbay2->thanhpho}}</td>
                                         <td>{{$item->ngaydatve}}</td>
                                         <td>{{$item->trangthai}}</td>
                                         <td>{{$item->ghethuong}}</td>
